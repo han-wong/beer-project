@@ -23,6 +23,8 @@ function showRandomBeer(beer) {
     ];
     const ul = document.createElement("ul");
 
+    img.addEventListener('click', e => sectionBeers.removeChild(art));
+    
     art.className = 'beer-info';
     img.className = 'beer-image';
     ul.className = 'beer-info-list';
