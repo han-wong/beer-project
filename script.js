@@ -75,7 +75,7 @@ function renderBeerInfo(beer) {
         sec.classList.remove('transparent');
     };
 
-    div.style.backgroundImage = `url(${beer.image_url ? beer.image_url : urlDefaultImage})`;
+    span.style.backgroundImage = `url(${beer.image_url ? beer.image_url : urlDefaultImage})`;
 
     info.forEach((a, b) => {
         const li = createElement('li', null, a);
