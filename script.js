@@ -64,7 +64,7 @@ function renderBeerInfo(beer) {
         `Volume: ${beer.volume.value} ${beer.volume.unit}`,
         `Ingredients: ${Object.getOwnPropertyNames(beer.ingredients).join(', ')}`,
         `Hops: ${beer.ingredients.hops.map(hops => hops.name).join(', ')}`,
-        `Consume together with the following food: ${beer.food_pairing.join(' or ')}`,
+        `Consume together with the following food: ${beer.food_pairing.map(food => '<a href="http://www.google.com/search?q=' + food + '" target="_blank">' + food + '</a>').join(' or ')}`,
         `Brewers tips: ${beer.brewers_tips}`,
     ];
 
@@ -92,7 +92,7 @@ function renderBeerInfo(beer) {
 function createElement(type, className = null, text = null, attr = null) {
     const element = document.createElement(type);
     if (className) element.className = className;
-    if (text) { if (type === 'img') element.src = text; else element.innerText = text; }
+    if (text) { if (type === 'img') element.src = text; else element.innerHTML = text; }
     if (attr) element.setAttribute(attr.name, attr.value);
     return element;
 }
