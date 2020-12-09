@@ -1,4 +1,5 @@
 const btnRandomBeer = document.querySelector('button.random-beer');
+const urlDefaultImage = 'https://images.punkapi.com/v2/keg.png';
 const main = document.querySelector('main');
 const sec = document.querySelector('.beer-section');
 const sec2 = document.querySelector('.beer-section-2');
@@ -22,27 +23,21 @@ function showRandomBeer(beer) {
 }
 
 function renderBeer(beer) {
-    const art = document.createElement('article');
-    const btn = document.createElement('button');
-    const div = document.createElement('div');
-    const div2 = document.createElement('div');
-    const h4 = document.createElement('h4');
-    const img = document.createElement('img');
+    const art = createElement('article', 'beer-card');
+    const btn = createElement('button', 'beer-card-button', 'See More >');
+    const div = createElement('div', 'beer-card-div');
+    const div2 = createElement('div', 'beer-card-div-2');
+    const h4 = createElement('h4', null, beer.name);
+    const span = createElement('span');
 
     art.onclick = e => {
         if (e.target != btn) sec.removeChild(art);
         else renderBeerInfo(beer);
     };
 
-    art.className = 'beer-card';
-    div.className = 'beer-card-div';
-    div2.className = 'beer-card-div-2';
-    btn.className = 'beer-card-button';
-    img.src = beer.image_url != null ? beer.image_url : './error-404-beer-not-found-prints.jpg';
-    h4.innerText = beer.name;
-    btn.innerText = 'See More >';
+    span.style.backgroundImage = `url(${beer.image_url ? beer.image_url : urlDefaultImage})`;
 
-    div.appendChild(img);
+    div.appendChild(span);
     div2.appendChild(h4);
     div2.appendChild(btn);
     art.appendChild(div);
@@ -57,26 +52,21 @@ function renderBeerInfo(beer) {
     removeAllChildNodes(sec2);
     sec.classList.add('transparent');
 
-    const art = document.createElement('article');
-    const div = document.createElement('div');
-    const div2 = document.createElement('div');
-    const h4 = document.createElement('h4');
-    const img = document.createElement('img');
-    const ul = document.createElement("ul");
+    const art = createElement('article', 'beer-info');
+    const div = createElement('div', 'beer-info-div');
+    const div2 = createElement('div', 'beer-info-div-2');
+    const h4 = createElement('h4', null, beer.name);
+    const span = createElement('span');
+    const ul = createElement('ul', 'beer-info-list');
     const info = [
         `${beer.description}`,
         `Alcohol by volume: ${beer.abv} %`,
         `Volume: ${beer.volume.value} ${beer.volume.unit}`,
-        `${beer.ingredients}`,
-        `${beer.ingredients.hops}`,
+        `Ingredients: ${Object.getOwnPropertyNames(beer.ingredients).join(', ')}`,
+        `Hops: ${beer.ingredients.hops.map(hops => hops.name).join(', ')}`,
         `Consume together with the following food: ${beer.food_pairing.join(' or ')}`,
         `Brewers tips: ${beer.brewers_tips}`,
     ];
-
-    art.className = 'beer-info';
-    div.className = 'beer-info-div';
-    div2.className = 'beer-info-div-2';
-    ul.className = 'beer-info-list';
 
     art.onclick = e => {
         disableButtons(document.querySelectorAll("nav>button"), false);
@@ -85,21 +75,26 @@ function renderBeerInfo(beer) {
         sec.classList.remove('transparent');
     };
 
-    h4.textContent = beer.name;
-    img.src = beer.image_url != null ? beer.image_url : './error-404-beer-not-found-prints.jpg';
+    div.style.backgroundImage = `url(${beer.image_url ? beer.image_url : urlDefaultImage})`;
 
     info.forEach((a, b) => {
-        const li = document.createElement('li');
-        li.textContent = a;
+        const li = createElement('li', null, a);
         ul.appendChild(li);
     });
-
-    div.appendChild(img);
+    div.appendChild(span);
     div2.appendChild(h4);
     div2.appendChild(ul);
     art.appendChild(div);
     art.appendChild(div2);
     sec2.appendChild(art);
+}
+
+function createElement(type, className = null, text = null, attr = null) {
+    const element = document.createElement(type);
+    if (className) element.className = className;
+    if (text) { if (type === 'img') element.src = text; else element.innerText = text; }
+    if (attr) element.setAttribute(attr.name, attr.value);
+    return element;
 }
 
 function disableButtons(buttons, bool) {

@@ -45,18 +45,17 @@ main {
 }
 
 .beer-card-div {
-    background-color: darkgray;
-    text-align      : center;
-    height          : 270px;
-    width           : 100%;
+    background: darkgray;
+    padding   : 20px;
+    height    : 400px;
+    width     : 100%;
 }
 
-.beer-card-div>img {
-    height       : 250px;
-    margin-top   : 10px;
-    margin-bottom: 10px;
-    margin-left  : auto;
-    margin-right : auto;
+.beer-card-div>span {
+    background     : darkgray no-repeat center;
+    background-size: contain;
+    display        : block;
+    height         : 200px;
 }
 
 .beer-card-div-2 {
@@ -90,11 +89,11 @@ main {
     position       : fixed;
     top            : 10%;
     width          : 100%;
-     z-index: 1;
+    z-index        : 1;
 }
 
 .beer-info {
-    align-items     : flex-start;
+    align-items     : stretch;
     display         : flex;
     flex-flow       : row nowrap;
     justify-content : center;
@@ -103,39 +102,30 @@ main {
     border-radius   : 2px;
     box-shadow      : 0 3px 3px 0 darkgray;
     overflow-y      : auto;
-    max-height      : 500px;
+    padding         : 20px;
     width           : 80%;
 }
 
 .beer-info h4 {
-    padding: 10px 0;
+    padding: 0 0 15px;
 }
 
 .beer-info-div {
-    display        : flex;
-    justify-content: center;
-    overflow       : hidden;
-    padding        : 20px;
-    height         : 100%;
-    width          : auto;
-}
-
-.beer-info-div img {
-    height    : 100%;
-    max-height: 458px;
-    width     : auto;
+    background     : darkgray no-repeat center;
+    background-size: contain;
+    height         : 400px;
+    width          : 25%;
 }
 
 .beer-info-div-2 {
-    padding: 20px;
-    height : 100%;
-    width  : 600px;
+    padding: 0 20px;
+    height : 400px;
+    width  : 75%;
 }
 
 .beer-info-list {
     list-style  : url('./beer.png');
-    padding-left: 30px;
-    ;
+    padding-left: 25px;
 }
 
 .beer-info-list>li {
