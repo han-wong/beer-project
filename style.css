@@ -195,7 +195,7 @@ main {
     }
 
     .beer-info-div-2>div {
-        padding: 15px;
+        padding: 15px 15px 0;
         height : 349px;
         width  : 377px;
     }
@@ -219,23 +219,22 @@ main {
     }
 
     .beer-info-div {
-        height: 150px;
-        width : 250px;
+        height: 168px;
+        width : 280px;
     }
 
     .beer-info-div>span {
-        height: 110px;
-        width : 210px;
+        height: 128px;
+        width : 240px;
     }
 
     .beer-info-div-2 {
-        height: 250px;
-        width : 250px;
+        height: 280px;
+        width : 280px;
     }
 
     .beer-info-div-2>div {
-        padding: 15px;
-        height : 230px;
-        width  : 250px;
+        height: 260px;
+        width : 280px;
     }
 }
