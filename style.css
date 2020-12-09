@@ -219,23 +219,23 @@ main {
     }
 
     .beer-info-div {
-        height: 180px;
-        width : 300px;
+        height: 150px;
+        width : 250px;
     }
 
     .beer-info-div>span {
-        height: 140px;
-        width : 260px;
+        height: 110px;
+        width : 210px;
     }
 
     .beer-info-div-2 {
-        height: 300px;
-        width : 300px;
+        height: 250px;
+        width : 250px;
     }
 
     .beer-info-div-2>div {
         padding: 15px;
-        height : 280px;
-        width  : 300px;
+        height : 230px;
+        width  : 250px;
     }
 }
