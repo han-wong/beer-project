@@ -34,19 +34,20 @@ main {
     display        : flex;
     flex-flow      : column nowrap;
     justify-content: space-between;
-    border         : 1px solid darkgray;
-    border-radius  : 10px;
-    box-shadow     : 0 3px 3px 0 darkgray;
-    margin         : 20px;
+    background     : linear-gradient(135deg, midnightblue, whitesmoke);
+    border-radius  : 20px;
+    box-shadow     : 5px 5px 5px 0 darkgray;
+    margin         : 20px 10px;
+    padding        : 2px;
     position       : relative;
 }
 
 .beer-card-div {
-    background: darkgray;
-    border-radius: 8px 8px 0 0;
-    padding   : 20px;
-    height    : 233px;
-    width     : 233px;
+    background   : linear-gradient(135deg, darkgray, darkslategray);
+    border-radius: 18px 18px 0 0;
+    padding      : 20px;
+    height       : 250px;
+    width        : 250px;
 }
 
 .beer-card-div>span {
@@ -54,8 +55,8 @@ main {
     background-repeat  : no-repeat;
     background-size    : contain;
     display            : block;
-    height             : 193px;
-    width              : 193px;
+    height             : 210px;
+    width              : 210px;
 }
 
 .beer-card-div-2 {
@@ -63,9 +64,11 @@ main {
     display        : flex;
     flex-flow      : column nowrap;
     justify-content: space-between;
+    background     : white;
+    border-radius  : 0 0 18px 18px;
     padding        : 10px;
-    height         : 144px;
-    width          : 233px;
+    height         : 150px;
+    width          : 250px;
 }
 
 .beer-card-button {
@@ -93,14 +96,14 @@ main {
 }
 
 .beer-info {
-    align-items     : flex-start;
-    display         : flex;
-    flex-flow       : row nowrap;
-    justify-content : center;
-    background-color: white;
-    border          : 1px solid darkgray;
-    border-radius   : 2px;
-    box-shadow      : 0 3px 3px 0 darkgray;
+    align-items    : flex-start;
+    display        : flex;
+    flex-flow      : row nowrap;
+    justify-content: center;
+    background     : linear-gradient(135deg, midnightblue, whitesmoke);
+    border-radius  : 20px;
+    box-shadow     : 0 3px 3px 0 darkgray;
+    padding        : 2px;
 }
 
 .beer-info h4 {
@@ -112,7 +115,8 @@ main {
     display        : flex;
     flex-direction : column;
     justify-content: center;
-    background     : darkgray;
+    background     : linear-gradient(135deg, darkgray, darkslategray);
+    border-radius  : 18px 0 0 18px;
     padding        : 20px;
     height         : 500px;
     width          : 309px;
@@ -128,10 +132,17 @@ main {
 }
 
 .beer-info-div-2 {
+    background   : white;
+    border-radius: 0 18px 18px 0;
+    padding      : 15px;
+    height       : 500px;
+    width        : 500px;
+}
+
+.beer-info-div-2>div {
     overflow-y: auto;
-    padding   : 20px;
-    height    : 500px;
-    width     : 500px;
+    height    : 470px;
+    width     : 470px;
 }
 
 .beer-info-list {
@@ -162,8 +173,9 @@ main {
     }
 
     .beer-info-div {
-        height: 233px;
-        width : 377px;
+        border-radius: 18px 18px 0 0;
+        height       : 233px;
+        width        : 377px;
     }
 
     .beer-info-div>span {
@@ -173,8 +185,54 @@ main {
     }
 
     .beer-info-div-2 {
-        overflow-y: auto;
-        height    : 377px;
-        width     : 377px;
+        border-radius: 0 0 18px 18px;
+        padding      : 0 0 15px;
+        height       : 364px;
+        width        : 377px;
+    }
+
+    .beer-info-div-2>div {
+        padding: 15px;
+        height : 349px;
+        width  : 377px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .beer-card-div {
+        height: 180px;
+        width : 180px;
+    }
+
+    .beer-card-div>span {
+        height: 140px;
+        width : 140px;
+    }
+
+    .beer-card-div-2 {
+        padding: 10px;
+        height : 108px;
+        width  : 180px;
+    }
+
+    .beer-info-div {
+        height: 210px;
+        width : 340px;
+    }
+
+    .beer-info-div>span {
+        height: 180px;
+        width : 300px;
+    }
+
+    .beer-info-div-2 {
+        height: 340px;
+        width : 340px;
+    }
+
+    .beer-info-div-2>div {
+        padding: 15px;
+        height : 320px;
+        width  : 340px;
     }
 }

@@ -55,6 +55,7 @@ function renderBeerInfo(beer) {
     const art = createElement('article', 'beer-info');
     const div = createElement('div', 'beer-info-div');
     const div2 = createElement('div', 'beer-info-div-2');
+    const div3 = createElement('div');
     const h4 = createElement('h4', null, beer.name);
     const span = createElement('span');
     const ul = createElement('ul', 'beer-info-list');
@@ -82,8 +83,9 @@ function renderBeerInfo(beer) {
         ul.appendChild(li);
     });
     div.appendChild(span);
-    div2.appendChild(h4);
-    div2.appendChild(ul);
+    div3.appendChild(h4);
+    div3.appendChild(ul);
+    div2.appendChild(div3);
     art.appendChild(div);
     art.appendChild(div2);
     sec2.appendChild(art);
