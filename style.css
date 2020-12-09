@@ -15,7 +15,7 @@ header a {
 main {
     align-items    : center;
     display        : flex;
-    flex-flow      : column nowrap;
+    flex-flow      : row nowrap;
     justify-content: center;
     padding        : 20px;
 }
@@ -24,38 +24,38 @@ main {
     align-items    : center;
     display        : flex;
     flex-flow      : row wrap;
-    justify-content: center;
+    justify-content: space-around;
+    margin-left    : auto;
+    margin-right   : auto;
     padding        : 20px;
 }
 
 .beer-card {
-    align-items        : flex-start;
-    display            : flex;
-    flex-flow          : column nowrap;
-    justify-content    : space-between;
-    /* background-color: darkgray; */
-    border             : 1px solid darkgray;
-    border-radius      : 2px;
-    box-shadow         : 0 3px 3px 0 darkgray;
-    margin             : 10px;
-    padding            : 0;
-    position           : relative;
-    height             : 400px;
-    width              : 250px;
+    display        : flex;
+    flex-flow      : column nowrap;
+    justify-content: space-between;
+    border         : 1px solid darkgray;
+    border-radius  : 10px;
+    box-shadow     : 0 3px 3px 0 darkgray;
+    margin         : 20px;
+    position       : relative;
 }
 
 .beer-card-div {
     background: darkgray;
+    border-radius: 10px 10px 0 0;
     padding   : 20px;
-    height    : 400px;
-    width     : 100%;
+    height    : 233px;
+    width     : 233px;
 }
 
 .beer-card-div>span {
-    background     : darkgray no-repeat center;
-    background-size: contain;
-    display        : block;
-    height         : 200px;
+    background-position: center;
+    background-repeat  : no-repeat;
+    background-size    : contain;
+    display            : block;
+    height             : 193px;
+    width              : 193px;
 }
 
 .beer-card-div-2 {
@@ -64,8 +64,8 @@ main {
     flex-flow      : column nowrap;
     justify-content: space-between;
     padding        : 10px;
-    height         : 100%;
-    width          : 100%;
+    height         : 144px;
+    width          : 233px;
 }
 
 .beer-card-button {
@@ -93,16 +93,14 @@ main {
 }
 
 .beer-info {
-    align-items        : flex-start;
-    display            : flex;
-    flex-flow          : row nowrap;
-    justify-content    : left;
-    background-color   : white;
-    border             : 1px solid darkgray;
-    border-radius      : 2px;
-    box-shadow         : 0 3px 3px 0 darkgray;
-    /* padding         : 20px; */
-    width              : 80%;
+    align-items     : flex-start;
+    display         : flex;
+    flex-flow       : row nowrap;
+    justify-content : center;
+    background-color: white;
+    border          : 1px solid darkgray;
+    border-radius   : 2px;
+    box-shadow      : 0 3px 3px 0 darkgray;
 }
 
 .beer-info h4 {
@@ -110,26 +108,30 @@ main {
 }
 
 .beer-info-div {
-    background: darkgray;
-    padding   : 20px;
-    height    : 400px;
-    min-width : 240px;
+    align-items    : center;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    background     : darkgray;
+    padding        : 20px;
+    height         : 500px;
+    width          : 309px;
 }
 
 .beer-info-div>span {
-    background     : no-repeat center;
-    background-size: contain;
-    display        : block;
-    height         : 100%;
-    min-width      : 200px;
+    background-repeat  : no-repeat;
+    background-position: center;
+    background-size    : contain;
+    display            : block;
+    height             : 460px;
+    width              : 269px;
 }
 
 .beer-info-div-2 {
     overflow-y: auto;
     padding   : 20px;
-    height    : 400px;
-    width     : 75%;
-    z-index   : 1;
+    height    : 500px;
+    width     : 500px;
 }
 
 .beer-info-list {
@@ -154,33 +156,25 @@ main {
     visibility: hidden;
 }
 
-/* .beer-info-list>li {
-    max-height: 200px;
-} */
-
-@media only screen and (max-width: 700px) {
+@media all and (max-width: 900px) {
     .beer-info {
-        align-items    : center;
-        display        : flex;
-        flex-flow      : column;
-        justify-content: center;
-        width          : 80%
+        flex-flow: column;
     }
 
     .beer-info-div {
-        height: 200px;
-        width : 100%;
+        height: 233px;
+        width : 377px;
     }
 
     .beer-info-div>span {
-        background-repeat: repeat;
-        height           : 160px;
+        background-repeat: repeat-x;
+        height           : 193px;
+        width            : 337px;
     }
 
     .beer-info-div-2 {
-
-        height: 400px;
-        width : 100%;
+        overflow-y: auto;
+        height    : 377px;
+        width     : 377px;
     }
-
 }
