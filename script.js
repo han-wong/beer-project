@@ -1,26 +1,78 @@
-const btnRandomBeer = document.querySelector('button.random-beer');
-const urlDefaultImage = 'https://images.punkapi.com/v2/keg.png';
+const btnClearAllBeer = document.querySelector('.clear-all-button');
+const btnNextBeer = document.querySelector('.next-beer-button');
+const btnPrevBeer = document.querySelector('.prev-beer-button');
+const btnRandomBeer = document.querySelector('.random-beer-button');
+const btnSearchBeer = document.querySelector('.search-beer-button');
+const inpSearchBeer = document.querySelector('.search-beer-input');
 const main = document.querySelector('main');
 const sec = document.querySelector('.beer-section');
 const sec2 = document.querySelector('.beer-section-2');
+const urlDefaultImage = 'https://images.punkapi.com/v2/keg.png';
 const urlRandomBeer = 'https://api.punkapi.com/v2/beers/random';
+const urlSearchBeer = 'https://api.punkapi.com/v2/beers?beer_name=';
+let pageNumber = 0;
 
-btnRandomBeer.addEventListener('click', e => getBeer(urlRandomBeer, showRandomBeer));
+btnClearAllBeer.onclick = () => handleClearAllBeerClicked();
+btnRandomBeer.onclick = () => handleRandomBeerClicked();
+btnSearchBeer.onclick = () => handleSearchBeerClicked();
+btnNextBeer.disabled = true;
+btnNextBeer.onclick = () => handleNextBeerClicked();
+btnPrevBeer.disabled = true;
+btnPrevBeer.onclick = () => handlePrevBeerClicked();
 
-getBeer(urlRandomBeer, showRandomBeer);
+getData(urlRandomBeer, handleRandomBeer);
 
 main.addEventListener('click', e => console.log(e));
 
-function getBeer(url, callback) {
+function getData(url, callback) {
     fetch(url)
         .then(response => response.json())
         .then(callback)
         .catch(error => console.log(error));
 }
+function handleClearAllBeerClicked() {
+    btnClearAllBeer.disabled = true;
+    btnRandomBeer.disabled = false;
+    removeAllChildNodes(sec);
+}
+function handleNextBeerClicked() {
+    if (inpSearchBeer.value != "") {
+        getData(`${urlSearchBeer}${inpSearchBeer.value}&page=${++pageNumber}&per_page=10`, handleSearchBeer);
+    }
+}
+function handlePrevBeerClicked() {
+    if (inpSearchBeer.value != "") {
+        getData(`${urlSearchBeer}${inpSearchBeer.value}&page=${--pageNumber}&per_page=10`, handleSearchBeer);
+    }
+}
 
-function showRandomBeer(beer) {
+function handleRandomBeer(beer) {
     renderBeer(beer[0]);
 }
+function handleRandomBeerClicked() {
+    btnClearAllBeer.disabled = false;
+    getData(urlRandomBeer, handleRandomBeer);
+    if (inpSearchBeer.value != "") {
+        btnNextBeer.disabled = true;
+        btnPrevBeer.disabled = true;
+    }
+}
+function handleSearchBeer(beers) {
+    removeAllChildNodes(sec);
+    btnRandomBeer.disabled = true;
+    btnClearAllBeer.disabled = false;
+    beers.length != 10 ? btnNextBeer.disabled = true : btnNextBeer.disabled = false;
+    for (const beer of beers) {
+        renderBeer(beer);
+    }
+}
+
+function handleSearchBeerClicked() {
+    pageNumber = 1;
+    pageNumber == 1 ? btnPrevBeer.disabled = true : btnPrevBeer.disabled = false;
+    getData(`${urlSearchBeer}${inpSearchBeer.value}&page=${pageNumber}&per_page=10`, handleSearchBeer);
+}
+
 
 function renderBeer(beer) {
     const art = createElement('article', 'beer-card');
@@ -70,7 +122,7 @@ function renderBeerInfo(beer) {
     ];
 
     art.onclick = e => {
-        disableButtons(document.querySelectorAll("nav>button"), false);
+        btnRandomBeer.disabled = false;
         disableButtons(document.querySelectorAll(".beer-card-button"), false);
         removeAllChildNodes(sec2);
         sec.classList.remove('transparent');

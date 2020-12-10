@@ -16,6 +16,12 @@ header a {
     text-decoration: none;
 }
 
+nav {
+    display        : flex;
+    flex-flow      : row wrap;
+    justify-content: space-evenly;
+}
+
 main {
     align-items    : center;
     display        : flex;
