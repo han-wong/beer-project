@@ -12,14 +12,58 @@ header {
     text-align: center;
 }
 
+header>h1 {
+    margin: 10px;
+}
+
 header a {
     text-decoration: none;
 }
 
 nav {
+    align-items    : center;
     display        : flex;
     flex-flow      : row wrap;
     justify-content: space-evenly;
+}
+
+nav button {
+    background: linear-gradient(135deg, darkgray, darkslategray);
+    border    : 2px outset;
+    color     : whitesmoke;
+}
+
+nav button,
+nav input {
+    border       : 2px outset;
+    border-radius: 15px;
+    font-size    : 16px;
+    margin       : 5px;
+    padding      : 7px;
+    outline      : 0;
+
+    min-width: 100px;
+    ;
+}
+
+nav button:focus {
+    border: 2px solid dimgray;
+}
+
+nav button:hover {
+    border    : 2px inset;
+    background: linear-gradient(270deg, darkgray, darkslategray);
+}
+
+nav button[disabled] {
+    background: linear-gradient(135deg, darkgray, darkslategray);
+    border    : 2px solid;
+    opacity   : 0.3;
+}
+
+nav input {
+    border: 2px inset;
+    width : 250px;
 }
 
 main {
@@ -54,15 +98,17 @@ main {
 .beer-card-div {
     background   : linear-gradient(135deg, darkgray, darkslategray);
     border-radius: 18px 18px 0 0;
+    cursor       : pointer;
     padding      : 20px;
     height       : 250px;
     width        : 250px;
 }
 
-.beer-card-div>span {
+.beer-card-span {
     background-position: center;
     background-repeat  : no-repeat;
     background-size    : contain;
+    cursor             : pointer;
     display            : block;
     height             : 210px;
     width              : 210px;
@@ -94,14 +140,18 @@ main {
 }
 
 .beer-section-2 {
-    align-items    : center;
-    display        : flex;
-    flex-flow      : row wrap;
-    justify-content: center;
-    position       : fixed;
-    top            : 10%;
-    width          : 100%;
-    z-index        : 1;
+    align-items       : center;
+    display           : flex;
+    flex-flow         : row wrap;
+    justify-content   : center;
+    position          : fixed;
+    top               : 0;
+    bottom            : 0;
+    left              : 0;
+    right             : 0;
+    /* height         : 100%;
+    width             : 100%; */
+    /* z-index        : 1; */
 }
 
 .beer-info {
@@ -113,6 +163,7 @@ main {
     border-radius  : 20px;
     box-shadow     : 0 3px 3px 0 darkgray;
     padding        : 2px;
+    position       : relative;
 }
 
 .beer-info h4 {
@@ -163,6 +214,20 @@ main {
     padding: 0 0 10px;
 }
 
+.close-button {
+    border       : 1px solid wheat;
+    border-radius: 0 50% 0 50%;
+    font-family  : monospace;
+    font-size    : 30px;
+    line-height  : 30px;
+    text-align   : center;
+    padding      : 4px;
+    position     : absolute;
+    right        : 0px;
+    height       : 40px;
+    width        : 40px;
+}
+
 .hidden {
     display: none;
 }
@@ -208,6 +273,10 @@ main {
 }
 
 @media all and (max-width: 600px) {
+    nav {
+        justify-content: flex-start;
+    }
+
     .beer-card-div {
         height: 180px;
         width : 180px;
