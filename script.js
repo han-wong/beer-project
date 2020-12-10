@@ -59,8 +59,6 @@ function handleRandomBeerClicked() {
 }
 function handleSearchBeer(beers) {
     removeAllChildNodes(sec);
-    btnRandomBeer.disabled = true;
-    btnClearAllBeer.disabled = false;
     beers.length != 10 ? btnNextBeer.disabled = true : btnNextBeer.disabled = false;
     for (const beer of beers) {
         renderBeer(beer);
@@ -68,11 +66,12 @@ function handleSearchBeer(beers) {
 }
 
 function handleSearchBeerClicked() {
+    btnClearAllBeer.disabled = false;
+    btnRandomBeer.disabled = true;
     pageNumber = 1;
     pageNumber == 1 ? btnPrevBeer.disabled = true : btnPrevBeer.disabled = false;
     getData(`${urlSearchBeer}${inpSearchBeer.value}&page=${pageNumber}&per_page=10`, handleSearchBeer);
 }
-
 
 function renderBeer(beer) {
     const art = createElement('article', 'beer-card');
