@@ -9,6 +9,7 @@ class Controller {
     }
     async init() {
         const beer = await this.model.getRandomBeer();
+        this.view.clearAllBeers();
         this.view.renderBeerCard(beer);
     }
 

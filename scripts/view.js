@@ -90,7 +90,6 @@ class View {
     }
 
     renderBeerCard(beer) {
-        console.log(beer);
         this.btnClearAll.disabled = false;
         const art = this.createElement('article', 'beer-card', null, { name: 'name', value: beer.id });
         const btn = this.createElement('button', 'beer-card-button', 'See More >', { name: 'name', value: beer.id });
